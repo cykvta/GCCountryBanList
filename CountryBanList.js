@@ -16,7 +16,7 @@
     box.style.maxHeight = "100rem";
     box.style.top = "16rem";
     box.style.left = "80%";
-    box.style.position = "fixed";
+    box.style.position = "";
     box.style.display = "block";
     box.innerHTML = "<p class='FilterLobby_sectionLabel__1zPew'>Country Ban List</p> <p class='FilterLobby_sectionLabel__1zPew'></p>"
 
@@ -24,7 +24,7 @@
     countryListHtml.style.listStyleType = "none"
 
     let countryList = "";
-    let list = ["Brasil", "Argentina", "Chile", "Uruguai", "Paraguai", "Estados Unidos", "Peru"]
+    let list = ["Brasil", "Argentina", "Chile", "Uruguai", "Paraguai"]
     for (let i =0; i < list.length; i++) {
         countryList += '<li> <input type="checkbox" id="'+ list[i] +'_box" value='+ list[i] +'><label style="color:white" for="'+ list[i] +'_box">'+ list[i] +'</label></li>'
     }
@@ -33,11 +33,18 @@
     countryListHtml.style.cursor = "pointer"
     countryListHtml.innerHTML = countryList
 
+    waitForElm('.FilterLobby_section__3UmYp').then((elm) => {
+        document.getElementsByClassName("FilterLobby_container__fB29J")[0].appendChild(box)
+        box.appendChild(countryListHtml)
+        checkBans(list);
+    })
 
-    document.getElementsByClassName("page")[0].appendChild(box)
-    box.appendChild(countryListHtml)
 
 
+    }
+)();
+
+async function checkBans(list){
     while (true) {
         const countryCheckList = {}
         for (let i =0; i < list.length; i++) {
@@ -71,9 +78,28 @@
 
         await sleep(200)
         }
-    }
-)();
+}
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function waitForElm(selector) {
+    return new Promise(resolve => {
+        if (document.querySelector(selector)) {
+            return resolve(document.querySelector(selector));
+        }
+
+        const observer = new MutationObserver(mutations => {
+            if (document.querySelector(selector)) {
+                resolve(document.querySelector(selector));
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    });
 }
