@@ -37,6 +37,7 @@
         let childs = document.getElementsByClassName("FilterLobby_section__3UmYp")
         for (let i = 0; i < childs.length; i++){
             childs[i].style.padding = "0.5rem 0rem"
+            childs[i].style.borderRight = "none"
         }
 
         filterBox.style.display = "block";
