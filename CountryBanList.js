@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Country Ban List
 // @namespace    https://github.com/cykvta/GCCountryBanList
-// @version      1.1
+// @version      1.2
 // @description  try to take over the world!
 // @author       Cykvta
 // @match        https://gamersclub.com.br/lobby*
@@ -10,7 +10,6 @@
 // ==/UserScript==
 
 (async function() {
-
     const box = document.createElement("div")
     box.classList.add("FilterLobby_main__23Z64")
     box.style.maxHeight = "100rem";
@@ -34,6 +33,13 @@
     countryListHtml.innerHTML = countryList
 
     waitForElm('.FilterLobby_section__3UmYp').then((elm) => {
+        const filterBox = document.getElementsByClassName("FilterLobby_main__23Z64")[0]
+        let childs = document.getElementsByClassName("FilterLobby_section__3UmYp")
+        for (let i = 0; i < childs.length; i++){
+            childs[i].style.padding = "0.5rem 0rem"
+        }
+
+        filterBox.style.display = "block";
         document.getElementsByClassName("FilterLobby_container__fB29J")[0].appendChild(box)
         box.appendChild(countryListHtml)
         checkBans(list);
