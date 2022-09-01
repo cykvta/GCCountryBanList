@@ -5,4 +5,4 @@ Install tampermonkey on your favorite browser (https://www.tampermonkey.net/)
 Go to tampermonkey extension > dashboard > utilities > and paste raw in to "Import from url section"
 URL= https://raw.githubusercontent.com/cykvta/GCCountryBanList/master/CountryBanList.js
 ## Demo
-![Demo_1](https://imgur.com/qwz8D67)
+![Demo_1](https://i.imgur.com/qwz8D67.png)
