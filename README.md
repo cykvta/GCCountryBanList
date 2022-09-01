@@ -3,8 +3,8 @@ Tampermonkey script to add a new filter in the "gamersclub.com.br" lobby list, t
 
 ## Installation    
 
-Install tampermonkey on your favorite browser (https://www.tampermonkey.net/)
-Go to tampermonkey extension > dashboard > utilities > and paste raw in to "Import from url section"
+Install tampermonkey on your favorite browser (https://www.tampermonkey.net/) <br>
+Go to tampermonkey extension > dashboard > utilities > and paste raw in to "Import from url section"<br>
 URL= https://raw.githubusercontent.com/cykvta/GCCountryBanList/master/CountryBanList.js
 
 ## Demo
